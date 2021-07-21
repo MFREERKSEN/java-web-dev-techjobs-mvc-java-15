@@ -10,7 +10,7 @@
 
     <h1 th:text="${#strings.capitalizeWords(title)}"></h1>
 
-    <form th:action="@{/search/results}" method = "post">
+    <form th:action="@{/search/results}" method="post">
         <h2>Search by:</h2>
 
         <p>
@@ -28,15 +28,35 @@
 
         <p>
             <label for="searchTerm">Keyword:</label>
-            <input type="text" name="searchTerm" id="searchTerm" />
+            <input type="text" name="searchTerm" id="searchTerm"/>
         </p>
 
-        <input type="submit" value="Search" />
+        <input type="submit" value="Search"/>
     </form>
 
-    <hr />
+    <hr/>
 
-    <!-- TODO #4 - Loop over the search results to display all job fields. -->
+    <table class="job-listing">
+        <tr>
+            <td>ID</td>
+            <td>Name</td>
+            <td>Employer</td>
+            <td>Location</td>
+            <td>Position Type</td>
+            <td>Skill</td>
+        </tr>
+        <th:block th:each="job : ${jobs}">
+            <tr>
+                <td th:block th:text="${job.getId()}"></td>
+                <td th:block th:text="${job.getName()}"></td>
+                <td th:block th:text="${job.getEmployer()}"></td>
+                <td th:block th:text="${job.getLocation()}"></td>
+                <td th:block th:text="${job.getPositionType()}"></td>
+                <td th:block th:text="${job.getCoreCompetency()}"></td>
+            </tr>
+        </th:block>
+    </table>
+
 
 </div>
 

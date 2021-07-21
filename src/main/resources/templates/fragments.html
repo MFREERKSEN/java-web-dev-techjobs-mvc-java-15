@@ -4,8 +4,8 @@
 <head th:fragment="head">
 
     <!-- Bootstrap stylesheets and script -->
-    <link th:href="@{/css/bootstrap.css}" rel="stylesheet" />
-    <link th:href="@{/css/techjobs.css}" rel="stylesheet" />
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet"/>
+    <link th:href="@{/css/techjobs.css}" rel="stylesheet"/>
     <script type="text/javascript" th:src="@{/js/bootstrap.js}"></script>
 
     <title th:text="'TechJobs' + ${title == null ? '' : ' :: ' + title}">TechJobs</title>
@@ -26,6 +26,31 @@
         </div>
     </div>
 </div>
+
+<div th:fragment="job-loop">
+    <th:block th:each="job : ${jobs}">
+        <table class="job-listing">
+            <tr>
+                <td>ID</td>
+                <td>Name</td>
+                <td>Employer</td>
+                <td>Location</td>
+                <td>Position Type</td>
+                <td>Skill</td>
+            </tr>
+
+            <tr>
+                <td th:block th:text="${job.getId()}"></td>
+                <td th:block th:text="${job.getName()}"></td>
+                <td th:block th:text="${job.getEmployer()}"></td>
+                <td th:block th:text="${job.getLocation()}"></td>
+                <td th:block th:text="${job.getPositionType()}"></td>
+                <td th:block th:text="${job.getCoreCompetency()}"></td>
+            </tr>
+        </table>
+    </th:block>
+</div>
+
 
 </body>
 </html>
